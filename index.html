@@ -33,6 +33,7 @@
             /* コンテナのサイズは枠を除いて300pxにする */
             gap: 0;
             overflow: hidden;
+            touch-action: none;
         }
 
         /* 2. タイル基本スタイル */
@@ -51,6 +52,7 @@
             border: 1px solid #aaa;
             cursor: pointer;
             transition: transform 0.3s ease;
+            touch-action: manipulation;
         }
 
         /* 枠線クラス */
@@ -172,6 +174,9 @@
 
         <button id="rotate-right" style="width: 120px; height: 60px; font-size: 16px;">右回転</button>
     </div>
+
+
+
     <script>
         const STORAGE_KEY = 'slide_puzzle_progress';
 
