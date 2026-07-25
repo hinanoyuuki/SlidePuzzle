@@ -3,7 +3,6 @@
 
 <head>
     <meta charset="UTF-8">
-    <!-- スマホでの表示を最適化 -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>特殊スライドパズル</title>
     <style>
@@ -53,6 +52,7 @@
             cursor: pointer;
             transition: transform 0.3s ease;
             touch-action: manipulation;
+            -webkit-tap-highlight-color: transparent;
         }
 
         /* 枠線クラス */
@@ -275,7 +275,10 @@
 
                     // クリアしていない時だけクリックイベントを登録
                     if (!isCompleted) {
-                        tile.addEventListener('click', () => moveTile(index));
+                        tile.addEventListener('pointerdown', (e) => {
+                            e.preventDefault(); 
+                            moveTile(index);
+                        });
                     }
                 }
                 container.appendChild(tile);
@@ -440,7 +443,7 @@
         });
 
         if (!loadGameState()) {
-            renderBoard(); 
+            renderBoard();
         }
 
         // --- SE（効果音）再生用の仕組み ---
